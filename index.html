@@ -42,7 +42,7 @@ main{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:cl
 @keyframes cuePulse{from{transform:scale(.98)}to{transform:scale(1.04)}}
 .store:hover,.store:focus-visible{border-color:#dfaf48;box-shadow:inset 0 0 0 6px #fffdf7,inset 0 0 0 7px #e2c27a,0 0 0 1px #dfaf48,0 16px 38px rgba(90,64,20,.2),0 0 30px #c0903055;outline:none}
 .store:hover:before,.store:focus-visible:before{transform:translateX(140%) skewX(-14deg)}
-.store:hover img,.store:focus-visible img{animation:cuePulse 1.3s ease-in-out infinite alternate;filter:drop-shadow(0 8px 16px rgba(40,28,8,.28)) drop-shadow(0 0 18px #f3d27a88)}
+.store:hover img,.store:focus-visible img{filter:drop-shadow(0 8px 16px rgba(40,28,8,.28)) drop-shadow(0 0 18px #f3d27a88)}
 .store:hover .enter b,.store:focus-visible .enter b{transform:translateX(4px)}
 .store:focus-visible{box-shadow:inset 0 0 0 6px #fffdf7,inset 0 0 0 7px #e2c27a,0 0 0 3px #1a1306,0 0 0 5px #dfaf48}
 .last{position:absolute;top:14px;right:14px;z-index:4;font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#f3d27a;background:#2a1f0b;border-radius:999px;padding:5px 10px;box-shadow:0 0 0 1px var(--gold-d)}
@@ -50,6 +50,19 @@ main{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:cl
 footer{text-align:center;font-size:.68rem;letter-spacing:.14em;color:#6e5a32;padding:0 16px 18px}
 @media (max-width:760px){main{grid-template-columns:1fr;gap:18px}.store img{max-width:420px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.store:hover img,.store:focus-visible img{animation:none!important}.store:before{display:none}}
+
+/* automatic soft sheen across the emblem itself (clipped to the emblem's pixels), every 3.5s, staggered per store */
+.emb{position:relative;z-index:1;display:block;width:100%;max-width:560px}
+.emb img{max-width:none}
+.emb:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  -webkit-mask:var(--m) center/100% 100% no-repeat;mask:var(--m) center/100% 100% no-repeat;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,244,214,.0) 42%,rgba(255,244,214,.45) 50%,rgba(255,255,255,.24) 54%,transparent 62%) no-repeat;
+  background-size:250% 100%;background-position:150% 0;animation:embSheen 3.5s ease-in-out infinite}
+#ottawa .emb:after{animation-delay:1.75s}
+@keyframes embSheen{0%{background-position:150% 0}38%,100%{background-position:-50% 0}}
+.store:hover .emb,.store:focus-visible .emb{animation:cuePulse 1.3s ease-in-out infinite alternate}
+@media (max-width:760px){.emb{max-width:420px}}
+@media (prefers-reduced-motion:reduce){.emb:after{animation:none;display:none}.store:hover .emb,.store:focus-visible .emb{animation:none!important}}
 </style></head>
 <body>
 <header>
@@ -59,12 +72,12 @@ footer{text-align:center;font-size:.68rem;letter-spacing:.14em;color:#6e5a32;pad
 <main>
   <a class="store" id="montreal" data-store="montreal" href="https://1p9p08-ym.myshopify.com/fr-ca" hreflang="fr-CA" aria-label="Carta Magica Montréal — magasin de Montréal / Montreal store">
     <span class="last" hidden>LAST VISITED</span>
-    <img src="assets/logo-carta-magica-montreal.png" width="1000" height="1000" alt="Carta Magica Montreal emblem: the gold dragon biting MONTREAL, claws gripping the word">
+    <span class="emb" style="--m:url(assets/logo-carta-magica-montreal.png)"><img src="assets/logo-carta-magica-montreal.png" width="1000" height="1000" alt="Carta Magica Montreal emblem: the gold dragon biting MONTREAL, claws gripping the word"></span>
     <span class="enter">MONTRÉAL <b>→</b></span>
   </a>
   <a class="store" id="ottawa" data-store="ottawa" href="https://y0mnsf-rp.myshopify.com/" hreflang="en-CA" aria-label="Carta Magica Ottawa — Ottawa store">
     <span class="last" hidden>LAST VISITED</span>
-    <img src="assets/logo-carta-magica-ottawa.png" width="1000" height="1000" alt="Carta Magica Ottawa emblem: the gold dragon biting OTTAWA, claws gripping the word">
+    <span class="emb" style="--m:url(assets/logo-carta-magica-ottawa.png)"><img src="assets/logo-carta-magica-ottawa.png" width="1000" height="1000" alt="Carta Magica Ottawa emblem: the gold dragon biting OTTAWA, claws gripping the word"></span>
     <span class="enter">OTTAWA <b>→</b></span>
   </a>
 </main>
