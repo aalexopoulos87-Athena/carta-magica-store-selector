@@ -1,14 +1,14 @@
-# Carta Magica — store selector / choix de boutique
+# Carta Magica — store selector (v2)
 
-Static bilingual (French first, English toggle) page that lets visitors choose a Carta Magica store:
+Static black-and-gold "choose your store" page: **CHOOSE YOUR STORE** / *Choisissez votre magasin* and two halves:
 
-- **Montréal** — 6360 St-Hubert → https://1p9p08-ym.myshopify.com/fr-ca (French storefront, `hreflang="fr-CA"`)
-- **Ottawa** — 1179 St-Laurent → https://y0mnsf-rp.myshopify.com/ (English storefront, `hreflang="en-CA"`)
+- **MONTREAL** → https://1p9p08-ym.myshopify.com/fr-ca (`hreflang="fr-CA"`; Canada market, French subfolder)
+- **OTTAWA** → https://y0mnsf-rp.myshopify.com/ (`hreflang="en-CA"`)
 
-Montréal uses its Canada market's French subfolder `/fr-ca` (English is `/en-ca`); Ottawa's default English is served at `/`.
+Each half has an original SVG skyline (Montreal: Olympic Stadium tower, Mount Royal cross, downtown towers, Biosphere;
+Ottawa: Peace Tower and Centre Block, East Block, Château Laurier) with a gold heraldic dragon rising behind it.
+Drifting embers (small canvas script), slow glow pulse, hover lift/glow; all motion off under `prefers-reduced-motion`.
+No libraries, no external requests, no cookies or analytics; `localStorage` only marks the last-visited store. `noindex`.
 
-No default store, no auto-redirect. The last choice and language are kept in `localStorage` on the visitor's device only
-(no cookies, no analytics). A "Changer de boutique / Change store" link forgets it. `noindex` while the stores are pre-launch.
-
-Hosted with GitHub Pages from `main` (root). To use a custom domain later (e.g. `choose.cartamagica.com`), add a `CNAME`
-file and a DNS CNAME record pointing to `aalexopoulos87-athena.github.io` — not done yet.
+Rollback to the previous French-first page: tag `v1-french-first`.
+Custom domain later (e.g. `choose.cartamagica.com`): add a `CNAME` file + DNS CNAME to `aalexopoulos87-athena.github.io` (not done).
