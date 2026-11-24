@@ -1,200 +1,63 @@
 <!doctype html>
-<!-- Carta Magica store selector v2 (black & gold, skylines + dragons). Static, no libraries, no cookies, no tracking.
-     Original vector art drawn for this page. Rollback: git tag v1-french-first. -->
+<!-- Carta Magica store selector v3: the official Carta Magica dragon logo, one version per store
+     (wordmark replaced with MONTREAL / OTTAWA). Static, no libraries, no cookies, no tracking.
+     Rollback: git tags v2-skylines (previous design) and v1-french-first. -->
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex"><meta name="theme-color" content="#000000">
-<title>Carta Magica — Choose your store</title>
+<title>Carta Magica — Choose your store / Choisissez votre magasin</title>
 <meta name="description" content="Carta Magica — choose your store: Montreal or Ottawa.">
 <link rel="icon" href="assets/logo-carta-magica.png">
 <style>
-:root{--gold:#C09030;--gold-b:#dfaf48;--gold-d:#84601d;--cream:#fff4d2}
+:root{--gold:#CC9933;--gold-b:#e2b553;--gold-d:#8E6C30;--cream:#fff4d2}
 *{box-sizing:border-box}
 html,body{margin:0;background:#000;color:var(--gold-b);min-height:100%}
-body{font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow-x:hidden}
-#embers{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
-.top{position:relative;z-index:2;text-align:center;padding:clamp(18px,3.4vh,34px) 16px clamp(14px,2.6vh,26px)}
-.logo{display:block;margin:0 auto clamp(8px,1.6vh,14px);width:auto;height:clamp(46px,7vh,68px)}
-h1{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:800}
-.t-en{font-size:clamp(1.55rem,3.6vw,2.7rem);letter-spacing:.22em;padding-left:.22em;line-height:1.05;
-  background:linear-gradient(180deg,var(--cream) 0%,var(--gold-b) 45%,var(--gold) 70%,var(--gold-d) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 18px #c0903044)}
+body{font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  background:radial-gradient(90% 60% at 50% 45%,#1a1306 0%,#070502 55%,#000 85%)}
+header{text-align:center;padding:clamp(22px,5vh,56px) 16px clamp(8px,2vh,20px)}
+h1{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:800}
+.t-en{font-size:clamp(1.5rem,3.6vw,2.6rem);letter-spacing:.22em;padding-left:.22em;line-height:1.05;text-transform:uppercase;
+  background:linear-gradient(180deg,var(--cream) 0%,var(--gold-b) 45%,var(--gold) 70%,var(--gold-d) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .t-fr{font-size:clamp(.9rem,1.7vw,1.15rem);letter-spacing:.12em;padding-left:.12em;font-weight:600;color:var(--gold)}
-.rule{width:min(320px,60vw);height:1px;margin:clamp(10px,1.8vh,16px) auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-main{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);padding:0 clamp(14px,3vw,44px) clamp(18px,3.5vh,40px);max-width:1500px;width:100%;margin:0 auto}
-.half{position:relative;display:block;min-height:clamp(380px,64vh,760px);border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;isolation:isolate;
-  background:radial-gradient(120% 80% at 50% 38%,#2a1f0b 0%,#0d0a05 46%,#000 78%);border:1px solid #c0903066;
-  box-shadow:0 0 0 1px #000,0 24px 60px #000c;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
-.half:before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(160deg,var(--cream),var(--gold) 30%,transparent 55%,var(--gold-d) 85%,var(--gold-b));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;z-index:3;pointer-events:none;transition:opacity .35s}
-.half svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.aura{transform-box:fill-box;transform-origin:center}
-.label{position:absolute;left:0;right:0;top:clamp(20px,5%,44px);z-index:2;text-align:center;pointer-events:none}
-.city{display:block;font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(2rem,4.6vw,4rem);letter-spacing:.16em;padding-left:.16em;line-height:1;
-  background:linear-gradient(180deg,var(--cream) 0%,var(--gold-b) 50%,var(--gold) 78%,var(--gold-d) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 2px 0 #000) drop-shadow(0 0 22px #dfaf4855)}
-.enter{position:absolute;left:50%;bottom:clamp(14px,3%,26px);transform:translateX(-50%);z-index:2;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
-  padding:11px 22px;border-radius:999px;font-weight:800;font-size:.8rem;letter-spacing:.2em;color:#000;background:linear-gradient(180deg,var(--gold-b),var(--gold));
-  box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold-d),0 10px 28px #000;transition:box-shadow .35s}
+.rule{width:min(320px,60vw);height:1px;margin:clamp(12px,2vh,18px) auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+main{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(16px,3vw,48px);padding:clamp(8px,2vh,24px) clamp(14px,4vw,64px) clamp(18px,4vh,44px);max-width:1400px;width:100%;margin:0 auto}
+.store{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vh,18px);padding:clamp(16px,3vw,36px);border-radius:24px;text-decoration:none;color:inherit;
+  border:1px solid #cc993333;background:radial-gradient(70% 60% at 50% 45%,#2a1f0b88 0%,#0000 70%);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
+.store img{display:block;width:100%;max-width:560px;height:auto;filter:drop-shadow(0 10px 30px #000);transition:filter .35s,transform .35s}
+.enter{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:11px 22px;border-radius:999px;font-weight:800;font-size:.8rem;letter-spacing:.2em;color:#000;
+  background:linear-gradient(180deg,var(--gold-b),var(--gold));box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold-d),0 10px 28px #000}
 .enter b{font-size:1rem;letter-spacing:0;transition:transform .35s}
-.last{position:absolute;top:14px;right:14px;z-index:4;font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#000;background:var(--cream);border-radius:999px;padding:5px 10px;box-shadow:0 0 0 1px var(--gold-d)}
+.store:hover,.store:focus-visible{transform:translateY(-4px);border-color:#cc9933aa;box-shadow:0 0 50px #cc993322;outline:none}
+.store:hover img,.store:focus-visible img{filter:drop-shadow(0 0 24px #cc993366) drop-shadow(0 10px 30px #000);transform:scale(1.02)}
+.store:hover .enter b,.store:focus-visible .enter b{transform:translateX(4px)}
+.store:focus-visible{box-shadow:0 0 0 3px var(--cream)}
+.last{position:absolute;top:12px;right:12px;font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#000;background:var(--cream);border-radius:999px;padding:5px 10px;box-shadow:0 0 0 1px var(--gold-d)}
 .last[hidden]{display:none}
-.half:hover,.half:focus-visible{transform:translateY(-6px);border-color:var(--gold-b);box-shadow:0 0 0 1px #000,0 0 0 2px #dfaf4888,0 0 60px #dfaf4844,0 30px 70px #000}
-.half:hover:before,.half:focus-visible:before{opacity:1}
-.half:hover .enter,.half:focus-visible .enter{box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold-b),0 0 26px #dfaf48aa}
-.half:hover .enter b,.half:focus-visible .enter b{transform:translateX(4px)}
-.half:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
-.dragon{filter:drop-shadow(0 0 6px #dfaf4870);transition:filter .35s}
-.half:hover .dragon,.half:focus-visible .dragon{filter:drop-shadow(0 0 12px #ffd77acc)}
-footer{position:relative;z-index:2;text-align:center;font-size:.68rem;letter-spacing:.14em;color:#8a7344;padding:0 16px 18px}
-@media (prefers-reduced-motion:no-preference){
-  .aura{animation:pulse 6s ease-in-out infinite}
-  .half:nth-child(2) .aura{animation-delay:-3s}
-  .eye{animation:eye 6s ease-in-out infinite}
-}
-@keyframes pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
-@keyframes eye{0%,100%{opacity:.75}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.half,.half:before,.enter,.enter b{transition:none}.half:hover,.half:focus-visible{transform:none}#embers{display:none}}
-@media (max-width:760px){
-  main{grid-template-columns:1fr;gap:16px}
-  .half{min-height:clamp(300px,52vh,440px)}
-  .city{font-size:clamp(2rem,10vw,2.8rem)}
-  .t-en{font-size:clamp(1.15rem,6.2vw,1.6rem);letter-spacing:.13em;padding-left:.13em}
-}
+footer{text-align:center;font-size:.68rem;letter-spacing:.14em;color:#8a7344;padding:0 16px 18px}
+@media (max-width:760px){main{grid-template-columns:1fr;gap:18px}.store img{max-width:420px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head>
 <body>
-<canvas id="embers" aria-hidden="true"></canvas>
-<!-- shared vector definitions (original art) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-  <linearGradient id="goldV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4d2"/><stop offset=".35" stop-color="#dfaf48"/><stop offset=".7" stop-color="#C09030"/><stop offset="1" stop-color="#6e4f17"/></linearGradient>
-  <linearGradient id="goldH" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#84601d"/><stop offset=".5" stop-color="#fff0c4"/><stop offset="1" stop-color="#84601d"/></linearGradient>
-  <linearGradient id="membrane" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2b0e"/><stop offset=".6" stop-color="#140f06"/><stop offset="1" stop-color="#050402"/></linearGradient>
-  <radialGradient id="auraG"><stop offset="0" stop-color="#dfaf48" stop-opacity=".55"/><stop offset=".45" stop-color="#C09030" stop-opacity=".18"/><stop offset="1" stop-color="#C09030" stop-opacity="0"/></radialGradient>
-  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".9"/></linearGradient>
-  <pattern id="win" width="9" height="11" patternUnits="userSpaceOnUse"><rect width="9" height="11" fill="#050505"/><rect x="2.5" y="3" width="3" height="4" fill="#dfaf48" opacity=".38"/></pattern>
-  <pattern id="winS" width="7" height="9" patternUnits="userSpaceOnUse"><rect width="7" height="9" fill="#050505"/><rect x="2" y="2.5" width="2.4" height="3" fill="#dfaf48" opacity=".26"/></pattern>
-  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/><feFlood flood-color="#dfaf48" flood-opacity=".45"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <filter id="glowStrong" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/><feFlood flood-color="#ffd77a" flood-opacity=".75"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <!-- heraldic dragon, frontal, wings spread (400 x 400) -->
-  <symbol id="dragon" viewBox="0 0 400 400">
-    <g id="wingL">
-      <path d="M196 238 C168 196 132 150 96 88 L14 126 Q50 150 30 192 Q70 202 66 242 Q104 240 124 268 Q162 254 196 238 Z" fill="url(#membrane)" stroke="url(#goldV)" stroke-width="2.4" stroke-linejoin="round"/>
-      <path d="M96 88 L14 126 M96 88 L30 192 M96 88 L66 242 M96 88 L124 268" stroke="#C09030" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9"/>
-      <path d="M196 238 C168 196 132 150 96 88" stroke="url(#goldV)" stroke-width="6" fill="none" stroke-linecap="round"/>
-      <path d="M96 88 L84 62 L102 84 Z" fill="#dfaf48"/>
-    </g>
-    <use href="#wingL" transform="matrix(-1 0 0 1 400 0)"/>
-    <!-- body -->
-    <path d="M200 212 C224 236 232 280 222 336 C214 350 186 350 178 336 C168 280 176 236 200 212 Z" fill="url(#goldV)"/>
-    <path d="M190 252 L200 262 L210 252 M188 272 L200 283 L212 272 M187 292 L200 304 L213 292 M188 312 L200 324 L212 312" stroke="#5a410f" stroke-width="2" fill="none" stroke-linejoin="round"/>
-    <!-- legs / claws -->
-    <path id="legL" d="M182 300 C164 312 156 330 150 346 L140 352 L154 354 L160 362 L164 350 C172 336 182 326 190 318 Z" fill="url(#goldV)"/>
-    <use href="#legL" transform="matrix(-1 0 0 1 400 0)"/>
-    <!-- neck -->
-    <path d="M186 226 C176 186 186 146 200 112 C214 146 224 186 214 226 Z" fill="url(#goldV)"/>
-    <path d="M200 132 L206 142 L200 150 L194 142 Z M200 160 L207 171 L200 180 L193 171 Z M200 190 L208 202 L200 212 L192 202 Z" fill="#fff0c4" opacity=".55"/>
-    <!-- horns -->
-    <path d="M186 76 C168 52 156 36 138 24 C160 30 178 46 194 68 Z" fill="url(#goldV)"/>
-    <path d="M214 76 C232 52 244 36 262 24 C240 30 222 46 206 68 Z" fill="url(#goldV)"/>
-    <!-- head -->
-    <path d="M200 56 L226 78 L222 102 L212 124 L205 140 L195 140 L188 124 L178 102 L174 78 Z" fill="url(#goldV)" stroke="#fff4d2" stroke-width="1" stroke-opacity=".6"/>
-    <path d="M176 82 L160 92 L178 96 Z M224 82 L240 92 L222 96 Z" fill="#C09030"/>
-    <path d="M200 66 L200 112" stroke="#6e4f17" stroke-width="1.5" opacity=".7"/>
-    <path class="eye" d="M184 88 L196 93 L186 97 Z M216 88 L204 93 L214 97 Z" fill="#000"/>
-    <path class="eye" d="M186 90 L194 93 L187 95 Z M214 90 L206 93 L213 95 Z" fill="#fff6c8"/>
-    <path d="M195 128 L197 133 M205 128 L203 133" stroke="#000" stroke-width="2" stroke-linecap="round"/><path d="M194 139 L196 147 L198 139 Z M202 139 L204 147 L206 139 Z" fill="#fff6c8"/><path d="M174 78 L158 70 L170 84 Z M226 78 L242 70 L230 84 Z M178 98 L162 104 L180 106 Z M222 98 L238 104 L220 106 Z" fill="#dfaf48"/>
-  </symbol>
-</defs></svg>
-
-<header class="top">
-  <img class="logo" src="assets/logo-carta-magica.png" alt="Carta Magica" width="500" height="388">
-  <h1><span class="t-en">CHOOSE YOUR STORE</span><span class="t-fr" lang="fr">Choisissez votre magasin</span></h1>
-  <div class="rule" aria-hidden="true"></div>
+<header>
+  <h1><span class="t-en">Choose your store</span><span class="t-fr" lang="fr">Choisissez votre magasin</span></h1>
+  <div class="rule"></div>
 </header>
-
 <main>
-  <!-- MONTREAL -->
-  <a class="half" id="montreal" data-store="montreal" href="https://1p9p08-ym.myshopify.com/fr-ca" hreflang="fr-CA" aria-label="Montreal store">
-    <svg viewBox="0 0 600 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-      <ellipse class="aura" cx="300" cy="340" rx="290" ry="240" fill="url(#auraG)"/>
-      <use class="dragon" href="#dragon" x="80" y="150" width="440" height="440"/>
-      <!-- Mount Royal + cross -->
-      <path d="M200 640 C240 520 300 488 350 492 C400 496 440 540 470 640 Z" fill="#070605" stroke="#84601d" stroke-width="1.5"/>
-      <g style="filter:drop-shadow(0 0 6px #ffe7a3)"><rect x="345" y="438" width="7" height="56" fill="#ffe7a3"/><rect x="332" y="453" width="33" height="6" fill="#ffe7a3"/></g>
-      <!-- Olympic Stadium + leaning tower -->
-      <path d="M0 640 C14 572 70 548 128 548 C180 548 218 574 232 640 Z" fill="url(#winS)" stroke="#C09030" stroke-width="2"/>
-      <path d="M30 600 C70 584 180 584 210 604" stroke="#C09030" stroke-width="1.2" fill="none" opacity=".7"/>
-      <path d="M200 640 C200 556 182 470 136 400 L160 384 C210 456 236 552 238 640 Z" fill="url(#winS)" stroke="url(#goldV)" stroke-width="2.6"/><path d="M128 404 L134 388 L166 368 L172 382 Z" fill="#0a0805" stroke="#dfaf48" stroke-width="2"/>
-      
-      <path d="M156 402 C110 470 80 520 60 560 M166 420 C140 470 120 520 104 556" stroke="#C09030" stroke-width="1" opacity=".55" fill="none"/>
-      <!-- downtown -->
-      <rect x="372" y="520" width="26" height="120" fill="url(#win)" stroke="#84601d"/>
-      <rect x="402" y="470" width="44" height="170" fill="url(#win)" stroke="#C09030" stroke-width="1.5"/>
-      <path d="M452 640 V452 H486 V640 Z" fill="url(#win)" stroke="#C09030" stroke-width="1.5"/>
-      <path d="M452 452 L469 408 L486 452 Z" fill="#0a0805" stroke="url(#goldV)" stroke-width="2"/>
-      <rect x="492" y="478" width="32" height="162" fill="url(#win)" stroke="#C09030" stroke-width="1.5"/><rect x="498" y="464" width="20" height="14" fill="#0a0805" stroke="#C09030"/>
-      <rect x="528" y="540" width="22" height="100" fill="url(#win)" stroke="#84601d"/>
-      <!-- Biosphere -->
-      <g transform="translate(560 586)"><circle r="44" fill="#050505" stroke="url(#goldV)" stroke-width="2.4"/>
-        <g stroke="#C09030" stroke-width="1" fill="none" opacity=".8"><ellipse rx="44" ry="14"/><ellipse rx="44" ry="30"/><ellipse rx="14" ry="44"/><ellipse rx="30" ry="44"/><path d="M-44 0 H44 M0 -44 V44"/></g></g>
-      <!-- tail of light in front -->
-      <path d="M-10 628 C120 600 220 640 330 618 S520 600 610 626" stroke="url(#goldH)" stroke-width="3" fill="none" opacity=".85"/>
-      <rect x="0" y="560" width="600" height="80" fill="url(#fade)"/>
-    </svg>
-    <span class="label"><span class="city">MONTREAL</span></span>
+  <a class="store" id="montreal" data-store="montreal" href="https://1p9p08-ym.myshopify.com/fr-ca" hreflang="fr-CA" aria-label="Carta Magica Montréal — magasin de Montréal / Montreal store">
     <span class="last" hidden>LAST VISITED</span>
-    <span class="enter">ENTER <b aria-hidden="true">→</b></span>
+    <img src="assets/logo-carta-magica-montreal.png" width="1000" height="776" alt="Carta Magica dragon holding the word MONTREAL">
+    <span class="enter">MONTRÉAL <b>→</b></span>
   </a>
-  <!-- OTTAWA -->
-  <a class="half" id="ottawa" data-store="ottawa" href="https://y0mnsf-rp.myshopify.com/" hreflang="en-CA" aria-label="Ottawa store">
-    <svg viewBox="0 0 600 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-      <ellipse class="aura" cx="300" cy="340" rx="290" ry="240" fill="url(#auraG)"/>
-      <use class="dragon" href="#dragon" x="80" y="150" width="440" height="440"/>
-      <!-- East Block (left) -->
-      <path d="M10 640 V560 H40 V540 L50 524 L60 540 V560 H110 V548 L120 534 L130 548 V560 H150 V640 Z" fill="url(#winS)" stroke="#84601d" stroke-width="1.5"/>
-      <!-- Centre Block -->
-      <path d="M150 640 V548 L160 532 L170 548 H220 L230 528 L240 548 H360 L370 528 L380 548 H430 L440 532 L450 548 V640 Z" fill="url(#win)" stroke="#C09030" stroke-width="1.8"/>
-      <path d="M150 560 H450" stroke="#C09030" stroke-width="1" opacity=".6"/>
-      <!-- Peace Tower -->
-      <rect x="280" y="410" width="40" height="230" fill="#060504" stroke="url(#goldV)" stroke-width="2.2"/>
-      <path d="M288 470 V520 M300 470 V520 M312 470 V520" stroke="#C09030" stroke-width="1.2" opacity=".7"/>
-      <rect x="276" y="398" width="48" height="14" fill="#0a0805" stroke="#C09030" stroke-width="1.5"/>
-      <path d="M276 398 L300 318 L324 398 Z" fill="#0a0805" stroke="url(#goldV)" stroke-width="2.2"/>
-      <path d="M270 404 L276 380 L282 404 Z M318 404 L324 380 L330 404 Z" fill="#C09030"/>
-      <circle cx="300" cy="438" r="10" fill="#050505" stroke="#ffe7a3" stroke-width="2"/><path d="M300 438 V431 M300 438 H305" stroke="#ffe7a3" stroke-width="1.5"/>
-      <path d="M300 318 V300" stroke="#dfaf48" stroke-width="2"/>
-      <!-- Château Laurier (right) -->
-      <path d="M462 640 V520 H584 V640 Z" fill="url(#win)" stroke="#C09030" stroke-width="1.6"/>
-      <path d="M456 522 L474 486 H572 L590 522 Z" fill="#0a0805" stroke="url(#goldV)" stroke-width="2"/>
-      <path d="M498 486 L506 470 L514 486 M532 486 L540 470 L548 486" stroke="#C09030" stroke-width="1.5" fill="none"/>
-      <rect x="466" y="484" width="18" height="40" fill="#060504" stroke="#C09030" stroke-width="1.4"/><path d="M462 486 L475 446 L488 486 Z" fill="#0a0805" stroke="url(#goldV)" stroke-width="1.8"/>
-      <rect x="562" y="484" width="18" height="40" fill="#060504" stroke="#C09030" stroke-width="1.4"/><path d="M558 486 L571 446 L584 486 Z" fill="#0a0805" stroke="url(#goldV)" stroke-width="1.8"/>
-      <path d="M-10 628 C120 600 220 640 330 618 S520 600 610 626" stroke="url(#goldH)" stroke-width="3" fill="none" opacity=".85"/>
-      <rect x="0" y="560" width="600" height="80" fill="url(#fade)"/>
-    </svg>
-    <span class="label"><span class="city">OTTAWA</span></span>
+  <a class="store" id="ottawa" data-store="ottawa" href="https://y0mnsf-rp.myshopify.com/" hreflang="en-CA" aria-label="Carta Magica Ottawa — Ottawa store">
     <span class="last" hidden>LAST VISITED</span>
-    <span class="enter">ENTER <b aria-hidden="true">→</b></span>
+    <img src="assets/logo-carta-magica-ottawa.png" width="1000" height="776" alt="Carta Magica dragon holding the word OTTAWA">
+    <span class="enter">OTTAWA <b>→</b></span>
   </a>
 </main>
-<footer>CARTA MAGICA · MONTREAL · OTTAWA</footer>
-
+<footer>CARTA MAGICA · MONTRÉAL · OTTAWA</footer>
 <script>
 (function(){
-  // remember last store (this device only; no cookies)
   try{var l=localStorage.getItem('cm-store');var el=l&&document.querySelector('#'+l+' .last');if(el)el.hidden=false;}catch(e){}
-  document.querySelectorAll('.half').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('cm-store',a.dataset.store)}catch(e){}})});
-  // drifting embers (canvas, ~40 particles, paused when hidden, off for reduced motion)
-  var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');if(mq&&mq.matches)return;
-  var c=document.getElementById('embers'),x=c.getContext('2d'),W,H,D=Math.min(window.devicePixelRatio||1,2),P=[],N;
-  function size(){W=c.clientWidth;H=c.clientHeight;c.width=W*D;c.height=H*D;x.setTransform(D,0,0,D,0,0);N=Math.round(Math.min(60,Math.max(24,W*H/26000)));while(P.length<N)P.push(spawn(true));P.length=N;}
-  function spawn(any){return{x:Math.random()*W,y:any?Math.random()*H:H+10,r:Math.random()*1.8+.6,vy:-(Math.random()*.35+.12),vx:(Math.random()-.5)*.18,ph:Math.random()*6.28,s:Math.random()*.02+.006,a:Math.random()*.5+.35}}
-  var last=0;function tick(t){var dt=Math.min(50,t-(last||t))/16.7;last=t;x.clearRect(0,0,W,H);
-    for(var i=0;i<P.length;i++){var p=P[i];p.ph+=p.s*dt;p.x+=(p.vx+Math.sin(p.ph)*.25)*dt;p.y+=p.vy*dt;if(p.y<-10||p.x<-10||p.x>W+10){P[i]=spawn(false);continue}
-      var f=p.a*(.6+.4*Math.sin(p.ph*3)),g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);g.addColorStop(0,'rgba(255,236,170,'+f+')');g.addColorStop(.35,'rgba(223,175,72,'+f*.6+')');g.addColorStop(1,'rgba(192,144,48,0)');
-      x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*4,0,6.283);x.fill();}
-    raf=requestAnimationFrame(tick)}
-  var raf;size();addEventListener('resize',size);raf=requestAnimationFrame(tick);
-  document.addEventListener('visibilitychange',function(){if(document.hidden)cancelAnimationFrame(raf);else{last=0;raf=requestAnimationFrame(tick)}});
+  document.querySelectorAll('.store').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('cm-store',a.dataset.store)}catch(e){}})});
 })();
 </script>
 </body></html>

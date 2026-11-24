@@ -1,14 +1,16 @@
-# Carta Magica — store selector (v2)
+# Carta Magica — store selector (v3)
 
-Static black-and-gold "choose your store" page: **CHOOSE YOUR STORE** / *Choisissez votre magasin* and two halves:
+Static black-and-gold "choose your store" page: **CHOOSE YOUR STORE** / *Choisissez votre magasin* and two clickable logos:
 
-- **MONTREAL** → https://1p9p08-ym.myshopify.com/fr-ca (`hreflang="fr-CA"`; Canada market, French subfolder)
-- **OTTAWA** → https://y0mnsf-rp.myshopify.com/ (`hreflang="en-CA"`)
+- **MONTREAL** logo → https://1p9p08-ym.myshopify.com/fr-ca (`hreflang="fr-CA"`)
+- **OTTAWA** logo → https://y0mnsf-rp.myshopify.com/ (`hreflang="en-CA"`)
 
-Each half has an original SVG skyline (Montreal: Olympic Stadium tower, Mount Royal cross, downtown towers, Biosphere;
-Ottawa: Peace Tower and Centre Block, East Block, Château Laurier) with a gold heraldic dragon rising behind it.
-Drifting embers (small canvas script), slow glow pulse, hover lift/glow; all motion off under `prefers-reduced-motion`.
-No libraries, no external requests, no cookies or analytics; `localStorage` only marks the last-visited store. `noindex`.
+The logos are edits of the official Carta Magica dragon logo (`assets/logo-carta-magica.png`, kept unchanged): the dragon,
+claws and jaw are the original pixels; only the "CARTA MAGICA" wordmark band was redrawn with MONTREAL / OTTAWA in the
+same gold two-tone / black / white outline style. Lettering font: Bungee (SIL OFL), the closest open match to the custom
+wordmark. Builder script lives outside this repo (`/workspace/carta-magica-store-logos/build_logos.py` on the build box).
 
-Rollback to the previous French-first page: tag `v1-french-first`.
-Custom domain later (e.g. `choose.cartamagica.com`): add a `CNAME` file + DNS CNAME to `aalexopoulos87-athena.github.io` (not done).
+Side by side on desktop, stacked on mobile. No libraries, no external requests, no cookies or analytics; `localStorage`
+only marks the last-visited store. `noindex`.
+
+Rollback: tag `v2-skylines` (skylines + dragons design), tag `v1-french-first` (first version).
