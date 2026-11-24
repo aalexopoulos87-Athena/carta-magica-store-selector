@@ -1,40 +1,55 @@
 <!doctype html>
 <!-- Carta Magica store selector v5: maple-leaf store emblems with the official Carta Magica dragon, one per store
      (wordmark replaced with MONTREAL / OTTAWA). Static, no libraries, no cookies, no tracking.
-     Rollback: git tags v2-skylines (previous design) and v1-french-first. -->
+     Rollback: git tags v5-a4-dark (black page), v4-lettering, v2-skylines, v1-french-first. -->
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex"><meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#fbf8f1">
 <title>Carta Magica — Choose your store / Choisissez votre magasin</title>
 <meta name="description" content="Carta Magica — choose your store: Montreal or Ottawa.">
 <link rel="icon" href="assets/logo-carta-magica.png">
 <style>
-:root{--gold:#CC9933;--gold-b:#e2b553;--gold-d:#8E6C30;--cream:#fff4d2}
+:root{--gold:#CC9933;--gold-b:#e2b553;--gold-d:#8E6C30;--ink:#2a1f0b;--paper:#fbf8f1}
 *{box-sizing:border-box}
-html,body{margin:0;background:#000;color:var(--gold-b);min-height:100%}
-body{font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
-  background:radial-gradient(90% 60% at 50% 45%,#1a1306 0%,#070502 55%,#000 85%)}
+html,body{margin:0;background:var(--paper);color:var(--ink);min-height:100%}
+body{font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;
+  background:radial-gradient(90% 70% at 50% 40%,#fffdf8 0%,#fbf8f1 60%,#f4eedf 100%)}
+/* subtle texture: paper grain + faint gold card-suit / rune motif */
+body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
+body:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .2  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.16;mix-blend-mode:multiply}
+body:after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23B08A3A' stroke-width='1.1' stroke-linejoin='round'%3E%3Cpath d='M30 14c-6 8-13 12-13 19a6.5 6.5 0 0 0 11.5 4.2L27 44h6l-1.5-6.8A6.5 6.5 0 0 0 43 33c0-7-7-11-13-19z'/%3E%3Cpath d='M90 74l9 12-9 12-9-12z'/%3E%3Ccircle cx='90' cy='26' r='9'/%3E%3Cpath d='M90 15v22M81 26h18M84 20l12 12'/%3E%3Ccircle cx='30' cy='86' r='9'/%3E%3Cpath d='M30 77l7 14H23z'/%3E%3C/g%3E%3C/svg%3E");background-size:120px 120px;opacity:.10;transform:rotate(-8deg) scale(1.3)}
+header,main,footer{position:relative;z-index:1}
 header{text-align:center;padding:clamp(22px,5vh,56px) 16px clamp(8px,2vh,20px)}
 h1{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:800}
-.t-en{font-size:clamp(1.5rem,3.6vw,2.6rem);letter-spacing:.22em;padding-left:.22em;line-height:1.05;text-transform:uppercase;
-  background:linear-gradient(180deg,var(--cream) 0%,var(--gold-b) 45%,var(--gold) 70%,var(--gold-d) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.t-fr{font-size:clamp(.9rem,1.7vw,1.15rem);letter-spacing:.12em;padding-left:.12em;font-weight:600;color:var(--gold)}
+.t-en{font-size:clamp(1.5rem,3.6vw,2.6rem);letter-spacing:.22em;padding-left:.22em;line-height:1.05;text-transform:uppercase;color:#6b4e14;
+  background:linear-gradient(180deg,#b88a2c 0%,#8E6C30 55%,#5e4412 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.t-fr{font-size:clamp(.9rem,1.7vw,1.15rem);letter-spacing:.12em;padding-left:.12em;font-weight:600;color:#6e5218}
 .rule{width:min(320px,60vw);height:1px;margin:clamp(12px,2vh,18px) auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 main{flex:1;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(16px,3vw,48px);padding:clamp(8px,2vh,24px) clamp(14px,4vw,64px) clamp(18px,4vh,44px);max-width:1400px;width:100%;margin:0 auto}
-.store{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vh,18px);padding:clamp(16px,3vw,36px);border-radius:24px;text-decoration:none;color:inherit;
-  border:1px solid #cc993333;background:radial-gradient(70% 60% at 50% 45%,#2a1f0b88 0%,#0000 70%);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s}
-.store img{display:block;width:100%;max-width:560px;height:auto;filter:drop-shadow(0 10px 30px #000);transition:filter .35s,transform .35s}
-.enter{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:11px 22px;border-radius:999px;font-weight:800;font-size:.8rem;letter-spacing:.2em;color:#000;
-  background:linear-gradient(180deg,var(--gold-b),var(--gold));box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold-d),0 10px 28px #000}
+/* gold frame around each store tile */
+.store{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2vh,18px);padding:clamp(18px,3vw,38px);border-radius:22px;text-decoration:none;color:inherit;
+  background:linear-gradient(180deg,#fffefb,#fbf6ea);border:2px solid #c9a24a;
+  box-shadow:inset 0 0 0 6px #fffdf7,inset 0 0 0 7px #e2c27a,0 14px 34px rgba(90,64,20,.14),0 2px 6px rgba(90,64,20,.08);
+  transition:border-color .35s,box-shadow .35s}
+/* light sweep (same as the Carta Magica site's game tiles) */
+.store:before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(115deg,transparent 28%,rgba(255,236,186,0) 40%,rgba(255,236,186,.34) 50%,rgba(255,255,255,.18) 56%,transparent 68%);
+  transform:translateX(-140%) skewX(-14deg);transition:transform .7s ease}
+.store img{position:relative;z-index:1;display:block;width:100%;max-width:560px;height:auto;filter:drop-shadow(0 8px 16px rgba(40,28,8,.28));transition:filter .35s}
+.enter{position:relative;z-index:4;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:11px 22px;border-radius:999px;font-weight:800;font-size:.8rem;letter-spacing:.2em;color:#1a1306;
+  background:linear-gradient(180deg,var(--gold-b),var(--gold));box-shadow:0 0 0 1px #5e4412,0 6px 16px rgba(90,64,20,.28)}
 .enter b{font-size:1rem;letter-spacing:0;transition:transform .35s}
-.store:hover,.store:focus-visible{transform:translateY(-4px);border-color:#cc9933aa;box-shadow:0 0 50px #cc993322;outline:none}
-.store:hover img,.store:focus-visible img{filter:drop-shadow(0 0 24px #cc993366) drop-shadow(0 10px 30px #000);transform:scale(1.02)}
+/* hover / keyboard focus: Ouvrium cuePulse (assets/reveal.css) */
+@keyframes cuePulse{from{transform:scale(.98)}to{transform:scale(1.04)}}
+.store:hover,.store:focus-visible{border-color:#dfaf48;box-shadow:inset 0 0 0 6px #fffdf7,inset 0 0 0 7px #e2c27a,0 0 0 1px #dfaf48,0 16px 38px rgba(90,64,20,.2),0 0 30px #c0903055;outline:none}
+.store:hover:before,.store:focus-visible:before{transform:translateX(140%) skewX(-14deg)}
+.store:hover img,.store:focus-visible img{animation:cuePulse 1.3s ease-in-out infinite alternate;filter:drop-shadow(0 8px 16px rgba(40,28,8,.28)) drop-shadow(0 0 18px #f3d27a88)}
 .store:hover .enter b,.store:focus-visible .enter b{transform:translateX(4px)}
-.store:focus-visible{box-shadow:0 0 0 3px var(--cream)}
-.last{position:absolute;top:12px;right:12px;font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#000;background:var(--cream);border-radius:999px;padding:5px 10px;box-shadow:0 0 0 1px var(--gold-d)}
+.store:focus-visible{box-shadow:inset 0 0 0 6px #fffdf7,inset 0 0 0 7px #e2c27a,0 0 0 3px #1a1306,0 0 0 5px #dfaf48}
+.last{position:absolute;top:14px;right:14px;z-index:4;font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#f3d27a;background:#2a1f0b;border-radius:999px;padding:5px 10px;box-shadow:0 0 0 1px var(--gold-d)}
 .last[hidden]{display:none}
-footer{text-align:center;font-size:.68rem;letter-spacing:.14em;color:#8a7344;padding:0 16px 18px}
+footer{text-align:center;font-size:.68rem;letter-spacing:.14em;color:#6e5a32;padding:0 16px 18px}
 @media (max-width:760px){main{grid-template-columns:1fr;gap:18px}.store img{max-width:420px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.store:hover img,.store:focus-visible img{animation:none!important}.store:before{display:none}}
 </style></head>
 <body>
 <header>
