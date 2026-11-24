@@ -13,10 +13,14 @@
 html,body{margin:0;background:var(--paper);color:var(--ink);min-height:100%}
 body{font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;position:relative;
   background:radial-gradient(90% 70% at 50% 40%,#fffdf8 0%,#fbf8f1 60%,#f4eedf 100%)}
-/* subtle texture: paper grain + faint gold card-suit / rune motif */
+/* subtle texture: paper grain + faint gold drifting TCG logo layer */
 body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
 body:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .2  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.16;mix-blend-mode:multiply}
-body:after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23B08A3A' stroke-width='1.1' stroke-linejoin='round'%3E%3Cpath d='M30 14c-6 8-13 12-13 19a6.5 6.5 0 0 0 11.5 4.2L27 44h6l-1.5-6.8A6.5 6.5 0 0 0 43 33c0-7-7-11-13-19z'/%3E%3Cpath d='M90 74l9 12-9 12-9-12z'/%3E%3Ccircle cx='90' cy='26' r='9'/%3E%3Cpath d='M90 15v22M81 26h18M84 20l12 12'/%3E%3Ccircle cx='30' cy='86' r='9'/%3E%3Cpath d='M30 77l7 14H23z'/%3E%3C/g%3E%3C/svg%3E");background-size:120px 120px;opacity:.10;transform:rotate(-8deg) scale(1.3)}
+body:after{--tw:1600px;--th:1000px;inset:0 auto auto 0;width:calc(100vw + var(--tw));height:100%;background:url(assets/tcg-logos-tile.webp) 0 0/var(--tw) var(--th) repeat;opacity:.08;will-change:transform;animation:tcgDrift 75s linear infinite}
+/* faded gold TCG logo layer drifting right-to-left in one seamless loop (one tile width per 75s) */
+@keyframes tcgDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--tw)),0,0)}}
+@media (max-width:760px){body:after{--tw:1040px;--th:650px;animation-duration:60s}}
+@media (prefers-reduced-motion:reduce){body:after{animation:none}}
 header,main,footer{position:relative;z-index:1}
 header{text-align:center;padding:clamp(22px,5vh,56px) 16px clamp(8px,2vh,20px)}
 h1{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;font-weight:800}
